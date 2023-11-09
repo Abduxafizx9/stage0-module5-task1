@@ -12,6 +12,8 @@ public class ArrayTasks {
      */
     public String[] seasonsArray() {
 
+        String[] seasons = {"Winter","Spring","Summer","Autumn"};
+        return seasons;
     }
 
     /**
@@ -25,7 +27,11 @@ public class ArrayTasks {
      * length = 5  -> [1, 2, 3, 4, 5]
      */
     public int[] generateNumbers(int length) {
-
+        int[] arr= new int[length];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i]=i;
+        }
+        return arr;
     }
 
     /**
@@ -38,6 +44,11 @@ public class ArrayTasks {
      */
     public int totalSum(int[] arr) {
 
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum+=arr[i];
+        }
+        return sum;
     }
 
     /**
@@ -50,7 +61,12 @@ public class ArrayTasks {
      * arr = [5, -3, -4],   number = 10    ->  -1
      */
     public int findIndexOfNumber(int[] arr, int number) {
+        for (int i = 0; i < arr.length; i++) {
+            if(arr[i]==number)
+                return i;
 
+        }
+        return -1;
     }
 
     /**
@@ -63,6 +79,11 @@ public class ArrayTasks {
      * arr = ["pineapple", "apple", "pen"] -> ["pen", "apple", "pineapple"]
      */
     public String[] reverseArray(String[] arr) {
+        String[] reverse = new String[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            reverse[i]=arr[arr.length-i];
+        }
+        return reverse;
 
     }
 
@@ -79,6 +100,13 @@ public class ArrayTasks {
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
 
+        int[] positive = new int[0];
+        for (int i = 0; i < arr.length; i++) {
+            if(arr[i]>0)
+                positive[i] = arr[i];
+
+        }
+        return positive;
     }
 
     /**
@@ -93,5 +121,45 @@ public class ArrayTasks {
      */
     public int[][] sortRaggedArray(int[][] arr) {
 
+        int[][] sorted = new int[0][0];
+        int prev,cur;
+        int save;
+        for (int i = 0; i < arr.length; i++) {
+            for (int z = 0; z < arr.length-1; z++) {
+               if(arr[z].length>arr[z+1].length)
+               {
+                   save = arr[z].length;
+                   arr[z][arr.length]=arr[z+1].length;
+                   arr[z+1][arr.length]=save;
+               }
+            }
+            for (int j = 0; j < arr[i].length; j++) {
+                if(j== arr[i].length){
+                    continue;
+                }
+                  prev = arr[i][j];
+                  cur =  arr[i][j+1];
+                if(prev<=cur)
+                {
+                    sorted[i][j]=prev;
+                    sorted[i][j+1]=cur;
+                }
+                else {
+                    sorted[i][j]=cur;
+                    sorted[i][j+1]=prev;
+                }
+                for (int k = 0; k < sorted[i].length-1; k++) {
+                    if(sorted[i][k]>sorted[i][k+1])
+                    {    save = sorted[i][k];
+                        sorted[i][k]=sorted[i][k+1];
+                        sorted[i][k+1] =save;
+                    }
+
+                }
+
+
+               }
+          }
+        return sorted;
     }
 }

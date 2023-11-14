@@ -81,7 +81,7 @@ public class ArrayTasks {
     public String[] reverseArray(String[] arr) {
         String[] reverse = new String[arr.length];
         for (int i = 0; i < arr.length; i++) {
-            reverse[i]=arr[arr.length-i];
+            reverse[i]=arr[arr.length-i-1];
         }
         return reverse;
 
@@ -100,10 +100,11 @@ public class ArrayTasks {
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
 
-        int[] positive = new int[0];
+        int[] positive = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
-            if(arr[i]>0)
+            if(arr[i]>0) {
                 positive[i] = arr[i];
+            }
 
         }
         return positive;
@@ -124,15 +125,16 @@ public class ArrayTasks {
         int[][] sorted = new int[0][0];
         int prev,cur;
         int save;
-        for (int i = 0; i < arr.length; i++) {
-            for (int z = 0; z < arr.length-1; z++) {
-               if(arr[z].length>arr[z+1].length)
-               {
-                   save = arr[z].length;
-                   arr[z][arr.length]=arr[z+1].length;
-                   arr[z+1][arr.length]=save;
-               }
+        for (int z = 0; z < arr.length-1; z++) {
+            if(arr[z].length>arr[z+1].length)
+            {
+                save = arr[z].length;
+                arr[z][arr.length]=arr[z+1].length;
+                arr[z+1][arr.length]=save;
             }
+        }
+        for (int i = 0; i < arr.length; i++) {
+
             for (int j = 0; j < arr[i].length; j++) {
                 if(j== arr[i].length){
                     continue;

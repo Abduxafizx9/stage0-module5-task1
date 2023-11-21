@@ -133,23 +133,16 @@ public class ArrayTasks {
      */
     public int[][] sortRaggedArray(int[][] arr) {
 
-        int[][] sorted = new int[0][0];
+        int[][] sorted = new int[arr.length][];
         int prev,cur;
-        int save;
-        for (int z = 0; z < arr.length-1; z++) {
-            if(arr[z].length>arr[z+1].length)
-            {
-                save = arr[z].length;
-                arr[z][arr.length]=arr[z+1].length;
-                arr[z+1][arr.length]=save;
-            }
-        }
+        int[] save;
+
         for (int i = 0; i < arr.length; i++) {
 
-            for (int j = 0; j < arr[i].length; j++) {
-                if(j== arr[i].length){
+            for (int j = 0; j < arr[i].length-1; j++) {
+                /*if(j== arr[i].length){
                     continue;
-                }
+                }*/
                   prev = arr[i][j];
                   cur =  arr[i][j+1];
                 if(prev<=cur)
@@ -161,18 +154,30 @@ public class ArrayTasks {
                     sorted[i][j]=cur;
                     sorted[i][j+1]=prev;
                 }
-                for (int k = 0; k < sorted[i].length-1; k++) {
+              /*  for (int k = 0; k < sorted[i].length-1; k++) {
                     if(sorted[i][k]>sorted[i][k+1])
                     {    save = sorted[i][k];
                         sorted[i][k]=sorted[i][k+1];
                         sorted[i][k+1] =save;
                     }
 
-                }
+                }*/
 
 
                }
           }
+        for (int i = 0; i < arr.length; i++) {
+
+            for (int z = 0; z < arr.length-1; z++) {
+                if(arr[z].length>arr[z+1].length)
+                {
+                    save = sorted[z];
+                    sorted[z]=sorted[z+1];
+                    sorted[z] =save;
+
+                }
+            }
+        }
         return sorted;
     }
 }

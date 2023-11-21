@@ -168,7 +168,7 @@ public class ArrayTasks {
                }
           }
         for (int z = 0; z < arr.length-1; z++) {
-                if(arr[z].length>arr[z+1].length)
+                if(sorted[z].length>sorted[z+1].length)
                 {
                     save = sorted[z];
                     sorted[z]=sorted[z+1];

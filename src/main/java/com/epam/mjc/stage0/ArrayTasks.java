@@ -143,6 +143,7 @@ public class ArrayTasks {
                 /*if(j== arr[i].length){
                     continue;
                 }*/
+                sorted[i] = new int[arr[i].length];
                   prev = arr[i][j];
                   cur =  arr[i][j+1];
                 if(prev<=cur)

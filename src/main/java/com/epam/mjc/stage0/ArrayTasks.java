@@ -138,12 +138,12 @@ public class ArrayTasks {
         int[] save;
 
         for (int i = 0; i < arr.length; i++) {
-
+            sorted[i] = new int[arr[i].length];
             for (int j = 0; j < arr[i].length-1; j++) {
                 /*if(j== arr[i].length){
                     continue;
                 }*/
-                sorted[i] = new int[arr[i].length];
+
                   prev = arr[i][j];
                   cur =  arr[i][j+1];
                 if(prev<=cur)

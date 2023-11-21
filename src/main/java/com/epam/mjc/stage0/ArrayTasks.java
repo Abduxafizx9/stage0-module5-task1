@@ -131,7 +131,7 @@ public class ArrayTasks {
      * arr = [[3, 1, 2,], [3,2]] -> [[2, 3], [1, 2, 3]]
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
-    public int[][] sortRaggedArray(int[][] arr) {
+    public static int[][] sortRaggedArray(int[][] arr) {
 
         int[][] sorted = new int[arr.length][];
         int prev,cur;
@@ -139,22 +139,33 @@ public class ArrayTasks {
 
         for (int i = 0; i < arr.length; i++) {
             sorted[i] = new int[arr[i].length];
-            for (int j = 0; j < arr[i].length-1; j++) {
+            for (int k = 1; k <= arr.length; k++) {
+
+                for (int j = 0; j < arr[i].length-k; j++) {
                 /*if(j== arr[i].length){
                     continue;
                 }*/
 
-                  prev = arr[i][j];
-                  cur =  arr[i][j+1];
-                if(prev<=cur)
-                {
-                    sorted[i][j]=prev;
-                    sorted[i][j+1]=cur;
-                }
-                else {
-                    sorted[i][j]=cur;
-                    sorted[i][j+1]=prev;
-                }
+                    if(k==1) {
+                        prev = arr[i][j];
+                        cur = arr[i][j + 1];
+                    }
+                    else
+                    {
+                        prev = sorted[i][j];
+                        cur = sorted[i][j + 1];
+                    }
+                    if(prev<=cur)
+                    {
+                        sorted[i][j]=prev;
+                        sorted[i][j+1]=cur;
+                    }
+                    else {
+                        sorted[i][j]=cur;
+                        sorted[i][j+1]=prev;
+                    }
+                 }
+
               /*  for (int k = 0; k < sorted[i].length-1; k++) {
                     if(sorted[i][k]>sorted[i][k+1])
                     {    save = sorted[i][k];
@@ -179,4 +190,18 @@ public class ArrayTasks {
 
         return sorted;
     }
+    public static void main(String[] args) {
+        int [][] arr = {{3,2323 ,1, 2,123,2323},{3,1}};
+        int[][] sortedArray = sortRaggedArray(arr);
+
+        // Print the sorted array
+        for (int i = 0; i < sortedArray.length; i++) {
+            for (int j = 0; j < sortedArray[i].length; j++) {
+                System.out.print(sortedArray[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 }
+
+
